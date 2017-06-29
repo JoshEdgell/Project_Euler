@@ -4,6 +4,8 @@ for (let i = 100; i < 1000; i++) {
     let prod = [];
     let rev = [];
     let k = 0;
+    let max = 0;
+    let f = 0;
     while (p > 0) {
       prod.push(p % 10);
       p = (p - prod[k]) / 10;
@@ -15,7 +17,11 @@ for (let i = 100; i < 1000; i++) {
     let prodstring = JSON.stringify(prod);
     let revstring = JSON.stringify(rev);
     if (prodstring === revstring) {
-      console.log(i + " and " + j + " multiply to get a palindrome of " + i * j);
+      f = i * j;
+      if (f > max) {
+        max = f;
+      console.log(i + " and " + j + " multiply to get the largest yet palindrome of " + max);
+    }
     }
   }
 }
