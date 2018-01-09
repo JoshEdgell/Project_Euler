@@ -101,4 +101,4 @@ const findMax = (array, value) => {
   return maxes[3]
 }
 
-console.log(findMax(grid, 7));
+console.log(findMax(grid, 5));
