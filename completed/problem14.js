@@ -1,20 +1,25 @@
 let max = 0;
 
-for (i = 2; i < 999999; i++) {
-  let s = i;
-  let l = 1;
-  while (s != 1) {
-    if (s % 2 === 0) {
-      s = s / 2;
-      l = l + 1;
+//Starting at 2 and counting to 1,000,000...
+for (i = 2; i < 1000000; i++) {
+  let value = i;
+  let length = 1;
+  //while the value is not equal to 1
+  while (value != 1) {
+    //If it's even, divide it by 2 (and increment the length)
+    if (value % 2 === 0) {
+      value = value / 2;
+      length += 1;
     }
+    //Otherwise, multiply by 3 and add 1 (and increment the length)
     else {
-      s = 3 * s + 1;
-      l = l + 1;
+      value = 3 * value + 1;
+      length += 1;
     }
   }
-  if (l > max) {
-    max = l;
+  //If the length of the chain is longer than the previous max, update the max.
+  if (length > max) {
+    max = length;
     maxer = i;
   }
 }

@@ -1,27 +1,37 @@
+let maxProduct = 0;
+
+const checkNumber = (number) => {
+  let array = [];
+  //Take the given number, put its digits into an array by using modulus and dividing the number until it equals 0
+  while (number > 0) {
+    array.unshift(number % 10);
+    number -= number % 10;
+    number = number / 10
+  }
+  //Stringify the array both forward and backward
+  const forward = JSON.stringify(array);
+  const reverse = JSON.stringify(array.reverse());
+  //If the strings are equal, return true.  Otherwise, return false
+  if (forward === reverse) {
+    return true
+  } else {
+    return false
+  }
+}
+
+//Iterate through three-digit numbers to get pairs of numbers to multiply
 for (let i = 100; i < 1000; i++) {
-  for(let j = 100; j < 1000; j++) {
-    let p = i * j;
-    let prod = [];
-    let rev = [];
-    let k = 0;
-    let max = 0;
-    let f = 0;
-    while (p > 0) {
-      prod.push(p % 10);
-      p = (p - prod[k]) / 10;
-      k++;
-    }
-    for (let k = 0; k < prod.length; k++) {
-      rev.unshift(prod[k]);
-    }
-    let prodstring = JSON.stringify(prod);
-    let revstring = JSON.stringify(rev);
-    if (prodstring === revstring) {
-      f = i * j;
-      if (f > max) {
-        max = f;
-      console.log(i + " and " + j + " multiply to get the largest yet palindrome of " + max);
-    }
+  for (let j = 100; j < 1000; j++) {
+    product = i * j;
+    //If the number is a palindrome...
+    if (checkNumber(product)) {
+      //And it's greater than the current maximum product...
+      if (product > maxProduct) {
+        //Make it the new max product!
+        maxProduct = product;
+      }
     }
   }
 }
+
+console.log(maxProduct);
